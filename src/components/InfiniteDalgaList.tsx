@@ -51,36 +51,38 @@ function DalgaCard({ id, user, content, createdAt, likeCount, likedByMe }: Dalga
 
     const trpcUtils = api.useContext()
     const toggleLike = api.dalga.toggleLike.useMutation({
-        onSuccess: async ({ addedLike }) => {
-            const updateData: Parameters<typeof trpcUtils.dalga.infiniteFeed.setInfiniteData>[1] = (oldData) => {
-                if (oldData == null) return
+        onSuccess: ({ addedLike }) => {
+            const updateData: Parameters<
+                typeof trpcUtils.dalga.infiniteFeed.setInfiniteData
+            >[1] = (oldData) => {
+                if (oldData == null) return;
 
-                const countModifier = addedLike ? 1 : -1
+                const countModifier = addedLike ? 1 : -1;
 
                 return {
                     ...oldData,
-                    pages: oldData.pages.map(page => {
+                    pages: oldData.pages.map((page) => {
                         return {
                             ...page,
-                            dalgas: page.dalgas.map(dalga => {
+                            dalgas: page.dalgas.map((dalga) => {
                                 if (dalga.id === id) {
                                     return {
                                         ...dalga,
                                         likeCount: dalga.likeCount + countModifier,
-                                        likedByMe: addedLike
-                                    }
+                                        likedByMe: addedLike,
+                                    };
                                 }
 
                                 return dalga;
-                            })
-                        }
-                    })
-                }
-            }
-
-            trpcUtils.dalga.infiniteFeed.setInfiniteData({}, updateData)
+                            }),
+                        };
+                    }),
+                };
+            };
         }
-    })
+    }
+    );
+
 
     function handleToggleLike() {
         toggleLike.mutate({
