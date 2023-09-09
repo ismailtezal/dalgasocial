@@ -35,27 +35,30 @@ export function SideNav() {
             )*/}
             {user == null ? (
                 <li className="hover:bg-slate-800 rounded-full w-full">
-                <div className="hover:bg-slate-800 rounded-full p-2">
-                    <span className="flex justify-center items-center gap-4">
-                        <VscSignIn className="h-6 w-6" />
-                        <span className="hidden  text-md md:inline"><button onClick={() => void signIn()}>Giriş Yap</button>
-                        </span>
-                    </span>
-                </div>
-            </li>
+                    <button onClick={() => signIn()}>
+                        <div className="hover:bg-slate-800 rounded-full p-2">
+                            <span className=" flex items-center gap-4">
+                                <VscSignIn className="h-6 w-6" />
+                                <span className="hidden text-md md:inline">
+                                    Giriş Yap
+                                </span>
+                            </span>
+                        </div>
+                    </button>
+                </li>
             ) : (
                 <li className="hover:bg-slate-800 rounded-full w-full">
-                <button onClick={() => signOut()}>
-                    <div className="hover:bg-slate-800 rounded-full p-2">
-                        <span className=" flex items-center gap-4">
-                            <VscSignOut className="h-6 w-6" />
-                            <span className="hidden text-md md:inline">
-                                Çıkış Yap
+                    <button onClick={() => signOut()}>
+                        <div className="hover:bg-slate-800 rounded-full p-2">
+                            <span className=" flex items-center gap-4">
+                                <VscSignOut className="h-6 w-6" />
+                                <span className="hidden text-md md:inline">
+                                    Çıkış Yap
+                                </span>
                             </span>
-                        </span>
-                    </div>
-                </button>
-            </li>
+                        </div>
+                    </button>
+                </li>
             )}
         </ul>
     </nav>
