@@ -18,7 +18,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Head>
-        <title>Dalga'Social</title>
+        <title>DalgasSocial</title>
         <meta name="description" content="This is a social media website for people who can 'dalga' with each other." />
       </Head>
       <div className={`flex mx-auto items-start sm:pr-4 ${inter.className}`}>

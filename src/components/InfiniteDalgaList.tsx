@@ -78,10 +78,14 @@ function DalgaCard({ id, user, content, createdAt, likeCount, likedByMe }: Dalga
                         };
                     }),
                 };
+
             };
+            trpcUtils.dalga.infiniteFeed.setInfiniteData({}, updateData);
         }
     }
     );
+
+
 
 
     function handleToggleLike() {
