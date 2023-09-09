@@ -5,6 +5,8 @@ import { VscHome, VscPerson, VscSignIn, VscSignOut } from "react-icons/vsc";
 export function SideNav() {
     const session = useSession()
     const user = session.data?.user
+    
+
     return <nav className="sticky text-white top-0 px-2 py-4">
         <ul className="flex flex-col items-start gap-2 whitespace-nowrap">
             <li className="hover:bg-slate-800 rounded-full w-full">
@@ -19,7 +21,7 @@ export function SideNav() {
                     </div>
                 </Link>
             </li>
-            {/*user != null && (
+            {/* {user != null && (
                 <li className="hover:bg-slate-800 rounded-full w-full">
                     <Link href={`/profile/${user.id}`}>
                         <div className="hover:bg-slate-800 rounded-full p-2">
@@ -32,7 +34,7 @@ export function SideNav() {
                         </div>
                     </Link>
                 </li>
-            )*/}
+            )} */}
             {user == null ? (
                 <li className="hover:bg-slate-800 rounded-full w-full">
                     <button onClick={() => signIn()}>

@@ -45,7 +45,7 @@ export function InfiniteDalgaList({ dalgas, isError, isLoading, fetchNewDalgas, 
     </ul>
 }
 
-const dateTimeFormatter = Intl.DateTimeFormat(undefined, { dateStyle: "short" })
+const dateTimeFormatter = Intl.DateTimeFormat(undefined, { dateStyle: "short", hourCycle: "h24" })
 
 function DalgaCard({ id, user, content, createdAt, likeCount, likedByMe }: Dalga) {
 
@@ -94,12 +94,11 @@ function DalgaCard({ id, user, content, createdAt, likeCount, likedByMe }: Dalga
         })
     }
 
-
     return <li className="flex gap-4 border-b 
     border-slate-800 px-4 text-white py-4">
 
         <Link href={`/profile/${user.id}`}>
-            <ProfileImage className="-z-10" src={user.image} />
+            <ProfileImage className="hover:ring-sky-600 ring-4 transition-all" src={user.image} />
         </Link>
         <div className="flex flex-grow flex-col">
             <div className="flex gap-1">
@@ -108,6 +107,7 @@ function DalgaCard({ id, user, content, createdAt, likeCount, likedByMe }: Dalga
                 </Link>
                 <span className="text-slate-500">-</span>
                 <span className="text-slate-500">{dateTimeFormatter.format(createdAt)}</span>
+                <span className="text-slate-500">{`${createdAt.getHours()}:${createdAt.getMinutes()} `}</span>
             </div>
             <p className="whitespace-pre-wrap">{content}</p>
             <HeartButton onClick={handleToggleLike} isLoading={toggleLike.isLoading} likedByMe={likedByMe} likeCount={likeCount} />

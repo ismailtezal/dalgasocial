@@ -81,7 +81,7 @@ function Form() {
 
     return <form onSubmit={handleSubmit} className="flex flex-col gap-2 border-b border-slate-800 px-4 py-2">
         <div className="flex gap-4">
-            <ProfileImage src={session.data.user.image} />
+            <ProfileImage className="ring-4" src={session.data.user.image} />
             <textarea
                 ref={inputRef}
                 style={{ height: 0 }}
