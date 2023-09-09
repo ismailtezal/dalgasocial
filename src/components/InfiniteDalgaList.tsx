@@ -1,9 +1,9 @@
 import Link from "next/link";
 import InfiniteScroll from "react-infinite-scroll-component"
-import { ProfileImage } from "./ProfileImage";
+import { ProfileImage } from "~/components/ProfileImage";
 import { useSession } from "next-auth/react";
 import { VscHeart, VscHeartFilled } from "react-icons/vsc"
-import { IconHoverEffect } from "./IconHoverEffect";
+import { IconHoverEffect } from "~/components/IconHoverEffect";
 import { api } from "~/utils/api";
 type Dalga = {
     id: string,
