@@ -1,3 +1,9 @@
-export function ProfilePage () {
-    return <h1>ProfilePage</h1>
+import React from 'react'
+
+const ProfilePage = () => {
+    return (
+        <div>sa</div>
+    )
 }
+
+export default ProfilePage
