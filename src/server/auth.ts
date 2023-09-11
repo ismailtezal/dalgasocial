@@ -37,7 +37,7 @@ declare module "next-auth" {
  *
  * @see https://next-auth.js.org/configuration/options
  */
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => ({
       ...session,
@@ -54,11 +54,13 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.DISCORD_CLIENT_SECRET,
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: process.env.GOOGLE_ID ? process.env.GOOGLE_ID : "",
+      clientSecret: process.env.GOOGLE_SECRET ? process.env.GOOGLE_SECRET : ""
     }),
   ],
 };
+
+export { authOptions as GET, authOptions as POST }
 
 /**
  * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
