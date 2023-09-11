@@ -39,13 +39,14 @@ declare module "next-auth" {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session:
+      ({ session, user }) => ({
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+        },
+      }),
   },
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -55,9 +56,12 @@ export const authOptions: NextAuthOptions = {
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID ? process.env.GOOGLE_ID : "",
-      clientSecret:process.env.GOOGLE_SECRET ? process.env.GOOGLE_SECRET : "",
+      clientSecret: process.env.GOOGLE_SECRET ? process.env.GOOGLE_SECRET : "",
     }),
   ],
+  session: {
+    strategy: 'jwt'
+  }
 };
 
 /**
