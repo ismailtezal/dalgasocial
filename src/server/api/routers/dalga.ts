@@ -62,7 +62,7 @@ export const dalgaRouter = createTRPCRouter({
     } || undefined
   }),
   create: protectedProcedure
-    .input(z.object({ content: z.string() })) // Değişiklik
+    .input(z.object({ content: z.string() })) 
     .mutation(async ({ input: { content }, ctx }) => {
       try {
         const dalga = await ctx.prisma.dalga.create({
